@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adire — Terms of Use | Appetency Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --warm-cream: #FAF7F2;
+      --warm-tan: #F0EAE0;
+      --bark: #8B6F5E;
+      --bark-dark: #5C4435;
+      --bark-light: #C4A898;
+      --ink: #2C2219;
+      --ink-soft: #5C4E45;
+      --ink-muted: #8B7D76;
+      --accent: #C17F4A;
+      --accent-light: #E8C9A8;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--warm-cream);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--warm-tan);
+      background: var(--warm-cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .wordmark {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--bark-dark);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .wordmark span { color: var(--accent); font-style: italic; }
+
+    .back-link {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--bark);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+
+    .back-link:hover { color: var(--accent); }
+
+    .content {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 4rem 2rem 5rem;
+    }
+
+    .page-eyebrow {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-family: 'Lora', serif;
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--bark-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+
+    .last-updated {
+      font-size: 0.8rem;
+      color: var(--ink-muted);
+      margin-bottom: 2.5rem;
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent-light);
+      margin-bottom: 2.5rem;
+      border-radius: 2px;
+    }
+
+    .placeholder-notice {
+      background: #FDF9F5;
+      border: 1px solid var(--warm-tan);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--bark-dark);
+      margin: 2rem 0 0.75rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--warm-tan);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="wordmark" href="/">Appetency <span>Studio</span></a>
+    <a class="back-link" href="/">← Back</a>
+  </nav>
+
+  <div class="content">
+    <div class="page-eyebrow">Adire</div>
+    <h1>Terms of Use</h1>
+    <div class="last-updated">Last updated: Coming soon</div>
+    <div class="divider"></div>
+
+    <div class="placeholder-notice">
+      These terms of use are currently being finalized. Please check back soon. If you have questions in the meantime, contact us at <strong>support@adire.ai</strong>.
+    </div>
+
+    <h2>What these terms will cover</h2>
+    <p>These terms of use will describe the rules and guidelines for using the Adire mobile application, published by Appetency Studio LLC.</p>
+
+    <h2>Contact</h2>
+    <p>For questions about these terms, please contact us at <strong>support@adire.ai</strong>.</p>
+  </div>
+
+  <footer>&copy; 2026 Appetency Studio LLC &middot; Metro Atlanta, Georgia</footer>
+
+</body>
+</html>
