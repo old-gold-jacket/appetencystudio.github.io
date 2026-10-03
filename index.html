@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Appetency Studio is a small, independent mobile app studio based in Metro Atlanta, GA. We build thoughtful apps for real people." />
+  <title>Appetency Studio LLC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Nunito:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --warm-cream: #FAF7F2;
+      --warm-tan: #F0EAE0;
+      --bark: #8B6F5E;
+      --bark-dark: #5C4435;
+      --bark-light: #C4A898;
+      --ink: #2C2219;
+      --ink-soft: #5C4E45;
+      --ink-muted: #8B7D76;
+      --accent: #C17F4A;
+      --accent-light: #E8C9A8;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--warm-cream);
+      color: var(--ink);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 2rem;
+      border-bottom: 1px solid var(--warm-tan);
+      background: var(--warm-cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .wordmark {
+      font-family: 'Lora', serif;
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: var(--bark-dark);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
+
+    .wordmark span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .nav-menu-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-menu-btn span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--bark-dark);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* FLYOUT */
+    .flyout {
+      position: fixed;
+      top: 0;
+      left: -280px;
+      width: 260px;
+      height: 100%;
+      background: #FDF9F5;
+      border-right: 1px solid var(--warm-tan);
+      z-index: 200;
+      transition: left 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      padding: 2rem 1.5rem;
+      box-shadow: 4px 0 20px rgba(0,0,0,0.06);
+    }
+
+    .flyout.open { left: 0; }
+
+    .flyout-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.4rem;
+      color: var(--ink-muted);
+      margin-bottom: 2rem;
+      display: block;
+      line-height: 1;
+    }
+
+    .flyout-wordmark {
+      font-family: 'Lora', serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--bark-dark);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--warm-tan);
+    }
+
+    .flyout-wordmark span {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .flyout-section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 0.5rem;
+      margin-top: 1.25rem;
+    }
+
+    .flyout-item {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.15s;
+      margin-bottom: 0.15rem;
+      text-decoration: none;
+    }
+
+    .flyout-item:hover {
+      background: var(--warm-tan);
+      color: var(--bark-dark);
+    }
+
+    .flyout-sub {
+      padding-left: 1.5rem;
+      font-size: 0.82rem;
+      font-weight: 400;
+      color: var(--ink-muted);
+    }
+
+    .flyout-sub:hover { color: var(--ink-soft); }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 34, 25, 0.25);
+      z-index: 150;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 5rem 2rem 4rem;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title {
+      font-family: 'Lora', serif;
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 500;
+      color: var(--bark-dark);
+      line-height: 1.25;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .divider {
+      width: 48px;
+      height: 2px;
+      background: var(--accent-light);
+      margin: 0 auto 1.75rem;
+      border-radius: 2px;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      line-height: 1.75;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    /* APPS SECTION */
+    .apps-section {
+      padding: 3rem 2rem 5rem;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .app-card {
+      background: #FDF9F5;
+      border: 1px solid var(--warm-tan);
+      border-radius: 16px;
+      padding: 1.75rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
+
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+      background: var(--bark-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: var(--accent-light);
+      font-style: italic;
+    }
+
+    .app-info { flex: 1; }
+
+    .app-name {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: var(--bark-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .app-desc {
+      font-size: 0.9rem;
+      color: var(--ink-muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .app-links {
+      display: flex;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .app-link {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--bark);
+      text-decoration: none;
+      border-bottom: 1px solid var(--bark-light);
+      padding-bottom: 1px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .app-link:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--warm-tan);
+      padding: 1.75rem 2rem;
+      text-align: center;
+      font-size: 0.78rem;
+      color: var(--ink-muted);
+      line-height: 1.8;
+    }
+
+    footer a {
+      color: var(--ink-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--bark); }
+
+    @media (max-width: 480px) {
+      .app-card { flex-direction: column; }
+      .hero { padding: 3.5rem 1.5rem 3rem; }
+      .apps-section { padding: 2rem 1.5rem 4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="overlay" id="overlay" onclick="closeFlyout()"></div>
+
+  <div class="flyout" id="flyout" role="dialog" aria-label="Navigation menu">
+    <button class="flyout-close" onclick="closeFlyout()" aria-label="Close menu">&#x2715;</button>
+    <div class="flyout-wordmark">Appetency <span>Studio</span></div>
+
+    <div class="flyout-section-label">Company</div>
+    <a class="flyout-item" href="#about">About</a>
+    <a class="flyout-item" href="mailto:support@appetencystudio.com">Contact</a>
+
+    <div class="flyout-section-label">Apps</div>
+    <a class="flyout-item" href="#adire">Adire</a>
+    <a class="flyout-item flyout-sub" href="/adire/privacy.html">Privacy Policy</a>
+    <a class="flyout-item flyout-sub" href="/adire/terms.html">Terms of Use</a>
+  </div>
+
+  <nav>
+    <a class="wordmark" href="/">Appetency <span>Studio</span></a>
+    <button class="nav-menu-btn" onclick="openFlyout()" aria-label="Open navigation menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <section class="hero" id="about">
+    <div class="hero-eyebrow">Independent Software Studio</div>
+    <h1 class="hero-title">Apps built for <em>real people</em>,<br>not just screens.</h1>
+    <div class="divider"></div>
+    <p class="hero-sub">Appetency Studio is a small, independent studio focused on building thoughtful mobile apps that make everyday life a little easier and a little more human.</p>
+  </section>
+
+  <section class="apps-section" id="adire">
+    <div class="section-label">Our Apps</div>
+    <div class="app-card">
+      <div class="app-icon">A</div>
+      <div class="app-info">
+        <div class="app-name">Adire</div>
+        <p class="app-desc">A connection coach that helps you navigate social situations with confidence — whether meeting someone new or deepening an existing relationship.</p>
+        <div class="app-links">
+          <a class="app-link" href="/adire/privacy.html">Privacy Policy</a>
+          <a class="app-link" href="/adire/terms.html">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>&copy; 2026 Appetency Studio LLC &middot; Metro Atlanta, Georgia</div>
+    <div style="margin-top: 0.4rem;">
+      <a href="mailto:support@appetencystudio.com">support@appetencystudio.com</a>
+    </div>
+  </footer>
+
+  <script>
+    function openFlyout() {
+      document.getElementById('flyout').classList.add('open');
+      document.getElementById('overlay').classList.add('show');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeFlyout() {
+      document.getElementById('flyout').classList.remove('open');
+      document.getElementById('overlay').classList.remove('show');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeFlyout();
+    });
+  </script>
+
+</body>
+</html>
